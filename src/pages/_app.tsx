@@ -1,6 +1,12 @@
-import '../../styles/globals.css'
+import '../styles/globals.css'
 import Head from 'next/head'
 import type { AppProps } from 'next/app'
+
+if (process.env.NODE_ENV === 'development') {
+  import('../mocks/worker').then(({ setupMocks }) => {
+    setupMocks()
+  })
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
